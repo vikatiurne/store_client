@@ -36,7 +36,7 @@ $api.interceptors.response.use(
         return $api.request(originalRequest);
       } catch (error) {
         console.error(error);
-      }Access-Control-Allow-Origin
+      }
     }
     throw error;
   }
