@@ -1,0 +1,57 @@
+@media print {
+  html,
+  body {
+    height: initial !important;
+    overflow: initial !important;
+    margin: 3rem;
+  }
+}
+
+.reportWrapper {
+  display: block;
+  width: 100%;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+
+.printBtn {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.3rem;
+  background-color: transparent;
+}
+
+.printBtn:hover {
+  font-weight: bold;
+}
+.table {
+  margin-bottom: 1rem;
+  border-collapse: collapse;
+  font-size: 1.12rem;
+  width: 100%;
+}
+.table * {
+  padding: 0.5rem;
+  font-family: "Roboto", sans-serif;
+}
+.table tr {
+  text-align: center;
+  border-bottom: 2px solid #6d1e93;
+  cursor: pointer;
+}
+.items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0;
+}
+.items p {
+  margin: 0 auto;
+  padding-bottom: 0;
+}
+.emptyNewOrders {
+  font-size: 2rem;
+  margin: 0 auto;
+}

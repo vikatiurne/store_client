@@ -1,0 +1,163 @@
+.modalTitle {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+.modalContent form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.modalContent form input {
+  margin: 0.5rem;
+  padding: 0.3rem;
+  font-size: 1.1rem;
+}
+.modalContent form textarea {
+  margin: 0.5rem 0 0.5rem;
+  border-radius: 5px;
+  max-width: calc(100% - 10vw);
+  width: 100%;
+  height: 20vh;
+  resize: none;
+  padding: 0.3rem;
+  font-size: 1rem;
+}
+
+.authModal {
+  text-transform: uppercase;
+  border-radius: 5px;
+}
+
+.authModal p {
+  text-transform: lowercase;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+.selectCategory {
+  margin: 0.5rem;
+}
+.subcategoryList {
+  text-align: left;
+}
+.subcategoryList p {
+  font-size: 1.1rem;
+  text-decoration: underline;
+}
+.redBorder {
+  border-color: red;
+}
+.errorMessage {
+  margin-bottom: 1rem;
+  color: #f06868;
+}
+.selectCategory {
+  margin: 0.5rem;
+  padding: 0.3rem;
+  font-size: 1.1rem;
+}
+.sizes,
+.options,
+.priceName {
+  display: flex;
+  flex-wrap: wrap;
+}
+.sizes input {
+  max-width: 5rem;
+}
+input[type='file'] {
+  display: none;
+}
+.fileUpload {
+  margin: 0.5rem 0 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+.fileUpload:hover {
+  background-color: blueviolet;
+  border: 1px solid blueviolet;
+}
+.iconDownload {
+  margin-left: 0.3rem;
+  font-size: 1.1rem;
+}
+
+.stars {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.stars p {
+  font-size: 1.7rem;
+  padding: 0.3rem;
+  cursor: pointer;
+}
+.starFill {
+  color: gold;
+}
+.ratingModal p {
+  margin-bottom: 1.3rem;
+}
+.control button {
+  margin: 0.5rem;
+}
+.errorMessage {
+  color: red;
+  font-size: 0.7rem;
+}
+
+.errSize {
+  max-width: 7rem;
+}
+.edit {
+  display: flex;
+}
+.iconBin {
+  font-size: 1.2rem;
+  color: #c45050;
+  transition: all 0.3s;
+}
+.iconEdit {
+  font-size: 1.1rem;
+  color: rgb(244, 244, 137);
+  transition: all 0.3s;
+}
+.iconBin:hover,
+.iconEdit:hover {
+  transform: scale(1.2);
+}
+.editPanel {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.catList {
+  text-align: start;
+  text-transform: uppercase;
+}
+.catList li {
+  margin-bottom: 1rem;
+}
+.subcatList {
+  margin-left: 2rem;
+  text-transform: lowercase;
+}
+.subcatList li {
+  margin-bottom: 0;
+}
+.add {
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+  transition: all 0.5s;
+}
+.add:hover{
+  background-color: #70419a;
+  color: white;
+}

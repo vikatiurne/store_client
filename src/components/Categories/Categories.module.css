@@ -1,0 +1,126 @@
+.containerCategories {
+  padding-right: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.sortByButtons {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  background-color: rgb(251, 247, 252);
+  border-bottom-right-radius: 50px;
+  border-top-right-radius: 50px;
+  box-shadow: 9px 9px 5px 0 rgba(0, 0, 0, 0.25);
+  padding: 4rem 2.5rem 4rem 1.5rem;
+}
+
+.titleCategories {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.titleCategories::after {
+  margin: 0.2rem auto 1rem;
+  display: block;
+  content: "";
+  background-color: #520b73;
+  width: 40px;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.sortByButtons > li,
+.sortByButtons > div > li {
+  margin: 0.4rem;
+  padding: 1rem;
+  font-size: 1.1rem;
+  background-color: #f9f9f9;
+  transition: all 0.5s;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+
+.sortByButtons > li::before,
+.sortByButtons > div > li::before {
+  position: absolute;
+  top: 22px;
+  left: 0;
+  margin: 0.2rem auto 1rem;
+  display: block;
+  content: "";
+  background-color: #520b73;
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+}
+
+.sortByButtons .active {
+  font-weight: bold;
+}
+.sortByButtons div{
+  display: inline-block;
+  position: relative;
+}
+.arrowDown,
+.arrowTop {
+  width: 10px;
+  height: 10px;
+  margin-left: 0.3rem;
+  transform: rotate(180deg);
+}
+.arrowDown {
+  transform: rotate(0deg);
+}
+.select {
+  position: absolute;
+  z-index: 2;
+  top: 3rem;
+  right: 0;
+  padding: 0.8rem 0 0.8rem;
+  background-color: #f9f9f9;
+  border-radius: 0.6rem;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+.select li {
+  padding: 0.6rem 1rem 0.6rem;
+  font-size: 1rem;
+  font-weight: normal;
+  color: black;
+}
+.select li:hover {
+  background-color: rgb(248, 241, 250);
+}
+.containerContent h2 {
+  margin-bottom: 4rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+@media (max-width: 550px) {
+  .containerCategoriesCover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0rem;
+    left: 0;
+    justify-content: center;
+    z-index: 5;
+    background: rgba(66, 62, 68, 0.9);
+  }
+  .containerContent{
+    color: white;
+    margin-left: 1rem;
+  }
+  .listLeft{
+    margin-left: -160px;
+  }
+  .listRight{
+    margin-left: 0;
+  }
+}

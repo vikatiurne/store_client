@@ -1,0 +1,170 @@
+.orderWrapper {
+  padding-right: 2rem;
+  padding-left: 2rem;
+  display: block;
+  width: 100%;
+}
+
+.orderContainer {
+  min-height: 45vh;
+  height: 100%;
+}
+
+.table {
+  margin-bottom: 1rem;
+  border-collapse: collapse;
+  font-size: 1.12rem;
+  width: 100%;
+}
+.table * {
+  padding: 0.5rem;
+  font-family: "Roboto", sans-serif;
+}
+.table tr {
+  text-align: center;
+  border-bottom: 2px solid #6d1e93;
+  cursor: pointer;
+}
+.orderList td:nth-child(2),
+.orderList td:nth-child(1) {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.orderList td:last-child {
+  text-align: right;
+}
+.orderList td:last-child p:first-child {
+  padding: 0.1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.orderStatus p,
+.orderSelect {
+  padding: 0.3rem;
+  text-transform: uppercase;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.orderStatusNew p {
+  background-color: #d68ef7;
+}
+.orderStatusWork p {
+  background-color: #b662dd;
+}
+.orderStatusReady p {
+  background-color: #8d34b6;
+}
+.orderStatusDone p {
+  background-color: #520b73;
+  color: white;
+}
+.orderSelect {
+  border: none;
+  background-color: #d68ef7;
+}
+.orderSelect option {
+  background-color: white;
+}
+.updateText {
+  padding: 0;
+  font-size: 0.8rem;
+  font-weight: normal;
+  color: gray;
+}
+
+.detail p,
+.detail p:last-child {
+  padding: 0;
+  text-align: left;
+  font-size: 1rem;
+}
+.detail p {
+  margin-bottom: 0.7rem;
+}
+
+.detailItem {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0;
+  font-size: 1rem;
+}
+
+.hideDetail * {
+  padding: 0;
+}
+.hideDetail {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  background-color: #f0d9fb;
+}
+.hideDetail p {
+  margin: 0 0.5rem 0;
+}
+.controlPanel {
+  margin: 2rem 0 2rem 0;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.iconSearch {
+  font-size: 1.5rem;
+  padding-right: 0;
+}
+.searchBtn {
+  border-radius: 50px;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+}
+.sortOrders,
+.search {
+  max-width: max-content;
+  border: 1px solid #efefef;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #efefef;
+  box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.25);
+  font-size: 1.2rem;
+}
+.sortOrders p {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.sortOrders p,
+.sortOrders select,
+.search input {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+}
+.sortOrders select,
+.search input {
+  background-color: transparent;
+  padding-left: 1rem;
+  border: none;
+  outline: none;
+}
+
+@media (max-width: 430px) {
+  .table {
+    font-size: 1rem;
+  }
+  .orderList td:nth-child(2),
+.orderList td:nth-child(1) {
+  font-size: 0.8rem;
+}
+.orderSelect{
+  font-weight: normal;
+}
+.controlPanel{
+  justify-content: center;
+}
+}
+

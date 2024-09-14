@@ -1,0 +1,25 @@
+.content {
+  padding: 0 2.8rem;
+  gap: 3rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.empty {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 650px) {
+  .content {
+    justify-content: center;
+  }
+}
+@media (max-width: 384px) {
+  .content {
+    justify-content: left;
+    gap: 0.5rem;
+    padding-right: 0.7rem;
+  }
+}
