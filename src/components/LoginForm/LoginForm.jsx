@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RxEyeClosed, RxEyeOpen } from "react-icons/rx";
 import { Link, Navigate, useLocation } from "react-router-dom";
+import { RiAdminFill } from "react-icons/ri";
+import { RiUser3Fill } from "react-icons/ri";
 
 import {
   fetchForgotPassword,
@@ -28,6 +30,7 @@ const LoginForm = () => {
   const [forgotPass, setForgotPass] = useState(false);
   const [resetPass, setResetPass] = useState(false);
   const [login, setLogin] = useState(true);
+  const [isUser, setIsUser] = useState(true);
 
   const dispatch = useDispatch();
 
@@ -57,7 +60,8 @@ const LoginForm = () => {
   };
 
   const registrationHandler = () => {
-    dispatch(fetchRegistration({ email, password, name }));
+    const role = isUser ? "USER" : "ADMIN";
+    dispatch(fetchRegistration({ email, password, name, role }));
   };
 
   const forgotPassHandler = () => {
@@ -97,7 +101,24 @@ const LoginForm = () => {
   const renderForm = (
     <form className={styles.formWrapper} onSubmit={(e) => e.preventDefault()}>
       {login && <h2>Вхід</h2>}
-      {registr && <h2>Реєстрація</h2>}
+      {registr && (
+        <div>
+          {isUser ? (
+            <RiUser3Fill
+              title="Користувач"
+              className={styles.userStatus}
+              onClick={() => setIsUser(false)}
+            />
+          ) : (
+            <RiAdminFill
+              title="Адміністратор"
+              className={styles.userStatus}
+              onClick={() => setIsUser(true)}
+            />
+          )}
+          <h2>Реєстрація</h2>
+        </div>
+      )}
       {forgotPass && <h2>Відновлення паролю</h2>}
       <div className={styles.formFields}>
         {registr ? (
@@ -192,7 +213,7 @@ const LoginForm = () => {
     </div>
   );
   return (
-    <section className={styles.loginForm} >
+    <section className={styles.loginForm}>
       <AuthModal active={modalActive} setActive={clickModalHandler} />
 
       {!isAuth ? render : <Navigate to="/" />}

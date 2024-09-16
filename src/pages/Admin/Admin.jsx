@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Navigate, Outlet } from "react-router-dom";
+import { Link, Navigate, Outlet, useLocation } from "react-router-dom";
 
 import { CreateProdact } from "../../components";
 import Edit from "../../components/Modals/Edit";
@@ -8,7 +8,7 @@ import Edit from "../../components/Modals/Edit";
 import { fetchGetCategory, fetchGetSubcategory } from "../Home/HomeSlice";
 
 import styles from "./Admin.module.css";
-import { fetchGetAllUsers, showOrders, showReport } from "./AdminSlice";
+import { fetchGetAllUsers } from "./AdminSlice";
 import {
   fetchGetAdminGetAll,
   getOrderStatus,
@@ -18,14 +18,9 @@ import {
 const Admin = () => {
   const [modalEditCategoryActive, setModalEditCategoryActive] = useState(false);
   const [modalProdactActive, setModalProdactActive] = useState(false);
-  const [isShowUsers, setIsShowUsers] = useState(false);
   const [visibleAdimList, setVisibleAdimList] = useState(false);
 
-  console.log(visibleAdimList);
-
   const isLogout = useSelector((state) => state.auth.isLogout);
-  const isShowOrders = useSelector((state) => state.admin.isShowOrders);
-  const isShowReport = useSelector((state) => state.admin.isShowReport);
   const count = useSelector((state) => state.admin.users.count);
   const users = useSelector((state) => state.admin.users.rows);
   const limit = useSelector((state) => state.office.limit);
@@ -33,6 +28,7 @@ const Admin = () => {
   const orderStatus = useSelector((state) => state.office.orderStatus);
 
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     dispatch(fetchGetSubcategory());
@@ -51,41 +47,22 @@ const Admin = () => {
 
   const prodactHandler = () => {
     setModalProdactActive(true);
-    dispatch(showOrders(false));
-    dispatch(showReport(false));
     dispatch(fetchGetCategory());
     dispatch(fetchGetSubcategory());
-    setIsShowUsers(false);
     setVisibleAdimList(false);
   };
 
   const editCategoryHandler = () => {
     setModalEditCategoryActive(true);
-    dispatch(showOrders(false));
-    dispatch(showReport(false));
     dispatch(fetchGetCategory());
     dispatch(fetchGetSubcategory());
-    setIsShowUsers(false);
   };
 
   const getAllOrdersHandler = () => {
-    dispatch(showOrders(true));
-    dispatch(showReport(false));
     setVisibleAdimList(false);
     dispatch(fetchGetAdminGetAll({ page, limit, status: orderStatus }));
     dispatch(search(false));
     dispatch(getOrderStatus(""));
-  };
-
-  const reportHandler = () => {
-    dispatch(showOrders(false));
-    dispatch(showReport(true));
-  };
-
-  const getUsersHandler = () => {
-    dispatch(showOrders(false));
-    dispatch(showReport(false));
-    setIsShowUsers(true);
   };
 
   const showAdminList = (e) => {
@@ -112,7 +89,9 @@ const Admin = () => {
             }
             onClick={(e) => showAdminList(e)}
           >
-            <h4 className={styles.optionsTitle}>Доступні опції</h4>
+            <Link to=".">
+              <h4 className={styles.optionsTitle}>Доступні опції</h4>
+            </Link>
             <Link to=".">
               <p onClick={editCategoryHandler}>
                 Редагувати категорії\підкатегорії
@@ -123,7 +102,7 @@ const Admin = () => {
             </Link>
 
             <Link to="users">
-              <p onClick={getUsersHandler}>Мої клієнти</p>
+              <p>Мої клієнти</p>
             </Link>
 
             <Link to="orders">
@@ -131,7 +110,7 @@ const Admin = () => {
             </Link>
 
             <Link to="report">
-              <p onClick={reportHandler}>Звіт за новими замовленнями</p>
+              <p>Звіт за новими замовленнями</p>
             </Link>
           </div>
 
@@ -146,7 +125,7 @@ const Admin = () => {
         </div>
       </div>
 
-      {!isShowOrders && !isShowReport && !isShowUsers ? (
+      {pathname === "/admin" ? (
         <div className={styles.adminInfo}>
           <div className={styles.infoItem}>
             <p>Клієнтів</p>

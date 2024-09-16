@@ -32,9 +32,9 @@ export const fetchAutoLogin = createAsyncThunk(
 
 export const fetchRegistration = createAsyncThunk(
   'auth/fetchRegistration',
-  async ({ email, password, name }, { rejectWithValue }) => {
+  async ({ email, password, name,role }, { rejectWithValue }) => {
     try {
-      return await AuthServices.registration(email, password, name);
+      return await AuthServices.registration(email, password, name,role);
     } catch (error) {
       return rejectWithValue(error.response.data);
     }

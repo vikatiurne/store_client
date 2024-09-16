@@ -12,7 +12,6 @@ import DateServices from "../../utils/DateServices";
 const Report = () => {
   const orders = useSelector((state) => state.office.userOrders);
   const count = useSelector((state) => state.office.count);
-  const status = useSelector((state) => state.office.status);
 
   const dispatch = useDispatch();
 
@@ -26,57 +25,55 @@ const Report = () => {
     documentTitle: "Звіт за новими замовленнями",
   });
 
-  return (
-    !!orders.length ?
+  return !!orders.length ? (
     <div className={styles.reportWrapper}>
       <button onClick={handlePrint} className={styles.printBtn}>
         <p>Друкувати</p>
         <ImPrinter />
       </button>
 
-      {status === "success" && (
-        <div ref={printRef}>
-          <table className={styles.table}>
-            <colgroup>
-              <col style={{ width: "10%" }} />
-              <col style={{ width: "20%" }} />
-              <col style={{ width: "20%" }} />
-              <col style={{ width: "30%" }} />
-              <col style={{ width: "20%" }} />
-            </colgroup>
-            <thead>
+      <div ref={printRef}>
+        <table className={styles.table}>
+          <colgroup>
+            <col style={{ width: "10%" }} />
+            <col style={{ width: "20%" }} />
+            <col style={{ width: "20%" }} />
+            <col style={{ width: "30%" }} />
+            <col style={{ width: "20%" }} />
+          </colgroup>
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Замовник</th>
+              <th>Готовність</th>
+              <th>Замовлення</th>
+              <th>Примітка</th>
+            </tr>
+          </thead>
+          {orders.map((item) => (
+            <tbody key={uuidv4()}>
               <tr>
-                <th>No.</th>
-                <th>Замовник</th>
-                <th>Готовність</th>
-                <th>Замовлення</th>
-                <th>Примітка</th>
+                <td>{item.id}</td>
+                <td>{item.name}</td>
+                <td>{DateServices.transformDate(item.readinessfor)}</td>
+                <td>
+                  {item.items.map((order) => (
+                    <div key={uuidv4()} className={styles.items}>
+                      <p>
+                        {order.name}: {order.qty}
+                      </p>
+                    </div>
+                  ))}
+                </td>
+                <td>{item.comment}</td>
               </tr>
-            </thead>
-            {orders.map((item) => (
-              <tbody key={uuidv4()}>
-                <tr>
-                  <td>{item.id}</td>
-                  <td>{item.name}</td>
-                  <td>{DateServices.transformDate(item.readinessfor)}</td>
-                  <td>
-                    {item.items.map((order) => (
-                      <div key={uuidv4()} className={styles.items}>
-                        <p>
-                          {order.name}: {order.qty}
-                        </p>
-                      </div>
-                    ))}
-                  </td>
-                  <td>{item.comment}</td>
-                </tr>
-              </tbody>
-            ))}
-          </table>
-        </div>
-      )}
+            </tbody>
+          ))}
+        </table>
       </div>
-      : <p className={styles.emptyNewOrders}>Нових замовлень немає</p>
+    </div>
+  ) : (
+    <p className={styles.emptyNewOrders}>Нових замовлень немає</p>
   );
 };
 

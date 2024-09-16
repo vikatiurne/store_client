@@ -19,8 +19,6 @@ const initialState = {
   editSubcatId: null,
   clickAdd: false,
   clickAddSubcat: false,
-  isShowOrders: false,
-  isShowReport: false,
 };
 
 export const fetchCreateCategory = createAsyncThunk(
@@ -146,13 +144,7 @@ const AdminSlice = createSlice({
     },
     isClickAddSubcat(state, { payload }) {
       state.clickAddSubcat = payload;
-    },
-    showOrders(state, { payload }) {
-      state.isShowOrders = payload;
-    },
-    showReport(state, { payload }) {
-      state.isShowReport = payload;
-    },
+    }
   },
   extraReducers(builder) {
     builder

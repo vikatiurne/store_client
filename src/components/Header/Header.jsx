@@ -20,7 +20,9 @@ const Header = () => {
   const price = useSelector((state) => state.basket.totalPrice);
   const orders = useSelector((state) => state.basket.order);
 
+
   const dispatch = useDispatch();
+  
 
   useEffect(() => {
     if (!!orders.length) {

@@ -11,7 +11,6 @@ import {
   selectedCategory,
   selectedSubcategory,
 } from "./HomeSlice";
-import { fetchGetGoogleUser } from "../Auth/AuthSlice";
 
 import styles from "./Home.module.css";
 
@@ -27,7 +26,6 @@ function Home() {
   const ratingById = useSelector((state) => state.prodact.rating);
   const isDelProdact = useSelector((state) => state.admin.isDelProdact);
   const prodacts = useSelector((state) => state.home.prodacts);
-  const isAuth = useSelector((state) => state.auth.isAuth);
   const prevLocation = useSelector((state) => state.auth.prevLocation);
 
   const dispatch = useDispatch();
@@ -73,9 +71,9 @@ function Home() {
     isDelProdact,
   ]);
 
-  useEffect(() => {
-    if (!isAuth) dispatch(fetchGetGoogleUser());
-  }, [dispatch, isAuth]);
+  // useEffect(() => {
+  //   if (!isAuth) dispatch(fetchGetGoogleUser());
+  // }, [dispatch, isAuth]);
 
   return (
     <section className={styles.home}>

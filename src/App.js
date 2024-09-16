@@ -22,16 +22,22 @@ import {
   Users,
 } from "./pages";
 
-import { fetchAutoLogin } from "./pages/Auth/AuthSlice";
+import { fetchAutoLogin, fetchGetGoogleUser } from "./pages/Auth/AuthSlice";
 import { fetchGetBasket } from "./pages/Basket/BasketSlice";
 
 function App() {
+  const isAuth = useSelector((state) => state.auth.isAuth);
   const dispatch = useDispatch();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+    console.log(!token);
     if (!!token) dispatch(fetchAutoLogin());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (!isAuth) dispatch(fetchGetGoogleUser());
+  }, [dispatch, isAuth]);
 
   const user = useSelector((state) => state.auth.user);
 
@@ -57,7 +63,7 @@ function App() {
           <Route path="auth" element={<Auth />} />
           <Route path="resetpassword/:link" element={<ForgotPassword />} />
           <Route path="admin/" element={<Admin />}>
-            <Route path="users" element={<Users/>} />
+            <Route path="users" element={<Users />} />
             <Route path="orders" element={<AdminOrderList />} />
             <Route path="report" element={<Report />} />
           </Route>

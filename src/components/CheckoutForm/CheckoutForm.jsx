@@ -53,7 +53,6 @@ const CheckoutForm = () => {
       userId: user.id ?? null,
       readinessfor: data.date,
     };
-console.log(inputData)
     dispatch(fetchGuestCreateOrder(inputData));
     dispatch(resetBasket());
     setIsDelivery(false);
