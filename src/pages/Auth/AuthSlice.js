@@ -154,9 +154,13 @@ const authSlice = createSlice({
       .addCase(fetchRegistration.rejected, (state, { payload }) => {
         state.status = 'error';
         let problem;
+        if(!!payload.errors.length){
         problem = payload.errors[0].path;
         if (problem === 'password') problem = 'паролю';
-        state.error = `${payload.message}. Перевірте коректність вашого ${problem}.`;
+          state.error = `${payload.message}. Перевірте коректність вашого ${problem}.`;
+        } else {
+          state.error = payload.message
+        }
       })
       .addCase(fetchLogout.pending, (state) => {
         state.status = 'loading';
